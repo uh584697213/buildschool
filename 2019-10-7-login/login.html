@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <script>
+        function Button_Submit() {
+            //抓取頁面上的checkboc1，取得是否checked
+            var isChecked = document.getElementById('agree').checked;
+            //如果是，就return true
+            if (isChecked) {
+               $('#modal-body').html("132");
+            } else {
+                document.getElementById('modal-body').innerHTML = "5888484";
+            }
+            //否則就... 
+            $('#myModal').modal();
+        };
+
+
+    </script>
+
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-4"></div>
+
+            <div class="card col-md-4">
+                <div class="card bg-dark text-white">登入系統</div>
+                <div class="card-body">
+                    <a href="applyaccount.html" class="btn btn-danger" id="apply">註冊新帳號</a><br /><br />
+                    <label>帳號</label>
+                    <input type="text" placeholder="輸入帳號"><br />
+                    <label>密碼</label>
+                    <input type="text" placeholder="輸入密碼"><br /><br />
+                    <input type="checkbox" id="agree" name="agree">我同意使用條款<br />
+                    <button type="submit" onclick="Button_Submit()" class="btn btn-dark" data-toggle="modal" data-target="#myModal">
+                        登入
+                    </button>
+                </div>
+            </div>
+
+            <div calss="col-md-4"></div>
+
+        </div>
+
+    </div>
+
+    <div class="container">
+        <h2></h2>
+        <p>
+        </p>
+
+        <!-- Button to Open the Modal -->
+
+
+        <!-- The Modal -->
+        <div class="modal fade" id="myModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title">標題</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+
+                    <!-- Modal body -->
+                    <div class="modal-body" id="modal-body">
+                        內容
+                    </div>
+
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">關閉</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

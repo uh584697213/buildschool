@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        td 
+        {
+            text-align: center;
+            cursor:pointer;
+        }
+    </style>
+    <script>
+        var a=0;
+        function change(o) {
+            if (o.innerText == "_") 
+            {
+                if (a == 0) {
+                    o.innerText = "X"
+                    a = 1;
+                   
+                }
+                else {
+                    o.innerText = "O"
+                    a = 0;
+                    
+                }
+            }
+        }
+        class array{
+             constract(){
+                 arr = [];
+                 arr[0]=["","",""];
+                 arr[1]=["","",""];
+                 arr[2]=["","",""];
+             }
+
+             setpoint(x,y,points){
+                 arr[x,y]=points;
+             }
+
+             winner(){
+                 for(let i=0;i<3;i++)
+                 {
+                     if(arr[0][i] && arr[0][i] && arr[0][i]||
+                     arr[1][i] && arr[1][i] && arr[1][i]||
+                     arr[2][i] && arr[2][i] && arr[2][i]||
+                     arr[i][0] && arr[i][0] && arr[i][0]||
+                     arr[i][1] && arr[i][1] && arr[i][1]||
+                     arr[i][2] && arr[i][2] && arr[i][2]||
+                     arr[i][i] && arr)
+                     {}
+                 }
+             }
+        }
+        
+        
+    </script>
+</head>
+
+<body>
+
+    <table style="border:10px #e078d8 dashed ;width:300px ;height: 300px" cellpadding="5" border='1'>
+        <caption>
+            <h4>遊戲</h4>
+        </caption>
+        <tr>
+            <td id="1" onclick="change(getElementById('1'));winer('1')">_</td>
+            <td id="2" onclick="change(getElementById('2'));winer('2')">_</td>
+            <td id="3" onclick="change(getElementById('3'));winer('3')">_</td>
+        </tr>
+        <tr>
+            <td id="4" onclick="change(getElementById('4'));winer('4')">_</td>
+            <td id="5" onclick="change(getElementById('5'));winer('5')">_</td>
+            <td id="6" onclick="change(getElementById('6'));winer('6')">_</td>
+        </tr>
+        <tr>
+            <td id="7" onclick="change(getElementById('7'));winer('7')">_</td>
+            <td id="8" onclick="change(getElementById('8'));winer('8')">_</td>
+            <td id="9" onclick="change(getElementById('9'));winer('9')">_</td>
+        </tr>
+    </table>
+
+</body>
+
+</html>
