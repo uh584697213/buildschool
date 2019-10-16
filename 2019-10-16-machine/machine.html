@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+    <script>
+        
+
+        function ButtonSend() {
+            var html = $('#TalkContainer').html();
+            var UserSay = $('#inputText').val();
+            //clean
+            $('#inputText').val('');
+            //show user Says...
+            $('#TalkContainer').html(html + '<br /><br />用戶 : ' + UserSay);
+            //scroll to bottom
+            $('#TalkContainer').scrollTop($('#TalkContainer')[0].scrollHeight);
+            //取得答案...
+            GetAnswer(UserSay, function (ret) {
+                //如果ok
+                //show user Says...
+                let html = $('#TalkContainer').html();
+                $('#TalkContainer').html(html + '<br /><br />客服 : ' + ret.answers[0].answer);
+                //scroll to bottom
+                $('#TalkContainer').scrollTop($('#TalkContainer')[0].scrollHeight);
+            });
+        }
+
+        //取得答案，並執行whenSuccess
+        //whenSuccess:傳入function作為參數
+        function GetAnswer(msg, whenSuccess) {
+            $.ajax({
+                type: "post",
+                headers: {
+                    "Authorization": "EndpointKey 4a976060-07e8-4448-9ef4-50a26ca2a2ac",
+                    "Content-Type": "application/json"
+                },
+                url: "https://20191016qnatest.azurewebsites.net/qnamaker/knowledgebases/0d9c6e00-8e3c-4220-a639-709a1c200fa8/generateAnswer",
+                data: JSON.stringify({
+                    "question": msg
+                }),
+                dataType: "json",
+                success: whenSuccess,
+                error: function (err) {
+                    //如果有錯
+                }
+            });
+        }
+
+        //doc ready
+        $(document).ready(function () {
+            $('#ButtonSend').click(ButtonSend);
+            $('#inputText').keypress(function (e) {
+                if (e.keyCode == 13) {
+                    ButtonSend();
+                    return false;
+                }
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div class="row" style="margin: 10px">
+        <div class="col-2"></div>
+        <div class="col-8">
+            <!-- 卡片  -->
+            <div class="card">
+                <!-- 卡片標題 -->
+                <span class="card-header bg-primary" style="color:white">
+                    對談機器人
+                </span>
+                <!-- 卡片內容 -->
+                <div class="card-body">
+                    <!-- 對談區 -->
+                    <div id="TalkContainer" style="overflow: auto; height: 300px;">
+                    </div>
+                </div>
+            </div>
+            <form class="form-inline">
+                <input id="inputText" class="form-control" style="width:90%">
+                <button type="button" id="ButtonSend" class="btn btn-primary">送出</button>
+            </form>
+        </div>
+        <div class="col-2"></div>
+</body>
+
+</html>
