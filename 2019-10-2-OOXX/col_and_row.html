@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        td {
+            text-align: center;
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        class OOXX {
+            constructor() {
+                this.arr = [];
+                this.arr[0] = ["", "", ""];
+                this.arr[1] = ["", "", ""];
+                this.arr[2] = ["", "", ""];
+            }
+
+            setpoint(x, y, points) {
+                this.arr[x][y] = points;
+            }
+
+            winner() {
+                for (let i = 0; i < 3; i++) {
+                    if (this.arr[0][i] == this.arr[1][i] && this.arr[1][i] == this.arr[2][i] && this.arr[0][i] !="") {
+                        return this.arr[0][i];
+                    } else if (this.arr[i][0] == this.arr[i][1] && this.arr[i][1] == this.arr[i][2] && this.arr[i][0] !="") {
+                        return this.arr[i][0];
+                    } else if (this.arr[0][0] == this.arr[1][1] && this.arr[1][1] == this.arr[2][2] ) {
+                        return this.arr[0][0];
+                    } else if (this.arr[0][2] == this.arr[1][1] && this.arr[1][1] == this.arr[2][0]) {
+                        return this.arr[0][2];
+                    }
+                }
+            }
+        }
+
+        var a = 0;
+        var a1 = new OOXX();
+
+        function change(o) {
+            if (o.innerText == "_") {
+                if (a == 0) {
+                    o.innerText = "X"
+                    a = 1;
+
+                } else {
+                    o.innerText = "O"
+                    a = 0;
+                }
+                var label = document.getElementById("label");
+                label.innerHTML = "rowindex " + o.parentElement.rowIndex + " cellindex " + o.cellIndex + " => " + o
+                    .innerText;
+                a1.setpoint(o.parentElement.rowIndex, o.cellIndex, o.innerText);
+                a1.winner();
+                console.log(a1.winner());
+                if (a1.winner() != "") {
+                    label.innerHTML = `<span> winer is ${a1.winner()}</span>`;
+                }
+
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <caption>
+        <h4>遊戲</h4>
+    </caption>
+    <div>
+        <table style="border:10px #e078d8 dashed ;width:300px ;height: 300px" cellpadding="5" border='1'>
+
+            <tr>
+                <td onclick="change(this);">_</td>
+                <td onclick="change(this);">_</td>
+                <td onclick="change(this);">_</td>
+            </tr>
+            <tr>
+                <td onclick="change(this);">_</td>
+                <td onclick="change(this);">_</td>
+                <td onclick="change(this);">_</td>
+            </tr>
+            <tr>
+                <td onclick="change(this);">_</td>
+                <td onclick="change(this);">_</td>
+                <td onclick="change(this);">_</td>
+            </tr>
+        </table>
+    </div>
+    <label id="label">123</label>
+</body>
+
+</html>
