@@ -1,6 +1,5 @@
 #all
 {
-    
     margin: auto;
     width: 90%;
 }
@@ -31,8 +30,8 @@
 }
 #div3
 {
-    /*border: 2px white solid;*/
-    background-color: white;
+    border: 2px white solid;
+    /*background-color: white;*/
     display:flex;
     width:100%;
     margin:0 auto;
@@ -67,11 +66,13 @@
 
 .class1
 {
+    border: 2px white solid;
     display: flex;
     flex-direction:column;
 }
 .class2
 {
+    border:2px white solid;
     background-size: cover;
 }
 .class3
@@ -80,7 +81,7 @@
 }
 .fas
 {
-    font-size: 50px;
+    font-size: 40px;
     color:rgb(5, 199, 134);
     margin:0 10px;
 }

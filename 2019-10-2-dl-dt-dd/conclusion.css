@@ -1,0 +1,64 @@
+img {
+  float: left;
+  border-radius: 20px;
+  margin-right: 10px;
+  width: 30%;
+  height: 100px;
+}
+
+#div {
+  width: 70%;
+  margin: 20px auto;
+}
+
+#div1 {
+  width: 800px;
+  height: 300px;
+  overflow: scroll;
+  margin: 0 auto;
+}
+
+#div2 {
+  width: 80%;
+  height: 120px;
+  margin: 0px auto;
+}
+
+#div3 {
+  width: 80%;
+  height: 150px;
+  border: 3px red dashed;
+  border-radius: 20px 35px 50px 65px;
+  margin: 5px auto;
+}
+
+#div4 {
+  width: 100px;
+  height: 50px;
+  border-top: dashed 2px blue;
+  border-right: solid 4px #e627b6;
+  border-bottom: dotted 6px yellowgreen;
+  border-left: double 8px #000000;
+  border-radius: 20px 30px 40px 50px;
+  margin: 20px auto;
+}
+
+#div2 ul {
+  float: left;
+  margin-left: 80px;
+}
+
+#p1 {
+  font-size: 20px;
+  line-height: 2em;
+}
+
+#item1 li {
+  float: left;
+  margin-left: 20px;
+}
+
+#item2 {
+  list-style-image: url("https://img.icons8.com/android/24/000000/small-axe.png");
+}
+/*# sourceMappingURL=conclusion.css.map */

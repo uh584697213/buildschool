@@ -2,75 +2,98 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
 
-    <script>
-            //getElementById(抓取頁面上的元素)
-            function getElement(name) {
-              return document.getElementById(name);
-            }
-        
-            //判斷是否可以送件
-            function Button_Submit() {
-              //抓取頁面上的checkboc1，取得是否checked
-              var isChecked = getElement('MustCheck').checked;
-              //如果是，就return true
-              if (isChecked) 
-              return true;
-              //否則就... 
-              alert('必須勾選同意!');
-              return false;
-            }
-        
-            //當網頁載入完成後執行
-            window.onload = function () {
-              //hook event(在form1被submit時...)
-              getElement('form1').onsubmit = function () {
-              //呼叫 Button_Submit()
-                return Button_Submit();
-              };
-            };
-          </script>
+  <script>
+    //getElementById(抓取頁面上的元素)
+    function getElement(name) {
+      return document.getElementById(name);
+    }
+
+    //判斷是否可以送件
+    function Button_Submit() {
+      //抓取頁面上的checkboc1，取得是否checked
+      var isChecked = getElement('MustCheck').checked;
+      //如果是，就return true
+      if (isChecked)
+        return true;
+      //否則就... 
+      alert('必須勾選同意!');
+      return false;
+    }
+
+    //當網頁載入完成後執行
+    window.onload = function () {
+      //hook event(在form1被submit時...)
+      getElement('form1').onsubmit = function () {
+        //呼叫 Button_Submit()
+        return Button_Submit();
+      };
+    };
+  </script>
 
 </head>
 
 <body>
+  <div style="width: 60%;margin: 0px auto;">
     <fieldset>
-        <form id="form1"
-            action="http://isbaas.azurewebsites.net/WebForms/Form2Mail.aspx?mailto=abc@gmail.com&redirect=http://www.google.com"
-            method="post">
-            <div>
-                <label>Name : </label>
-                <input type="text" placeholder="請輸入姓名" id="field" />
-            </div>
-            <div>
-                <label>Password</label>
-                <input type="text" placeholder="輸入密碼" id="Password" />
-            </div>
-            
-            <textarea cols="40" row="5"></textarea><br />
-            
-            <input type="radio" name="location" value="taipei" />台北<br />
-            <input type="radio" name="location" value="new taipei">新北<br />
-            <input type="checkbox" name="interested" value="inter">123<br />
-            
-            <select name="city">
-                <option value="1">sydney</option>
-                <option value="2">brisben</option>
-                <option value="3" selected>melbourne</option>
-                <option value="4">adelaide</option>
-            </select><br />
-            
-            <!--input type="reset" value="重新填寫"-->
-            <input type="checkbox" id="MustCheck" name="MustCheck">       同意你隨便用個資...
-            <button type="submit">send</button>
-            <button type="reset">reset</button>
-            
-        </form>
+      <form id="form1"
+        action="http://isbaas.azurewebsites.net/WebForms/Form2Mail.aspx?mailto=abc@gmail.com&redirect=http://www.google.com"
+        method="post">
+        
+        <fieldset>
+          <legend>個人資料--<i>必填</i></legend>
+          <label>Name : </label>
+          <input type="text" placeholder="請輸入姓名" id="field" />
+          <br>
+          <label>Password</label>
+          <input type="text" placeholder="輸入密碼" id="Password" />
+          <br>
+          <label>性別 : </label>
+          <input type="radio" name="gender" value="man" id="man">
+          <label for="man">男性</label>
+          <input type="radio" name="gender" value="woman" id="woman">
+          <label for="woman">女性</label>
+        </fieldset>
+        <br><br>
+
+        <fieldset>
+          <legend>個人資料--興趣</legend>
+          <label>興趣 :</label>
+          <input type="checkbox" value="10" id="music" name="_music">音樂
+          <input type="checkbox" value="11" id="exe" name="_exe">運動
+          <input type="checkbox" value="12" id="read" name="_read">閱讀
+          <input type="checkbox" value="13" id="movie" name="_movie">電影<br />
+          <label>專長:</label>
+          <textarea id="good" cols="50" rows="5"></textarea>
+        </fieldset>
+        <br><br>
+
+        <fieldset>
+          <legend>個人資料--地址</legend>
+          <label>郵遞區號:</label>
+          <input type="text" placeholder="" value="" id="code" name="_code"><br />
+          <label>地點 :</label>
+          <select name="city">
+            <option value="1">sydney</option>
+            <option value="2">brisben</option>
+            <option value="3" selected>melbourne</option>
+            <option value="4">adelaide</option>
+          </select><br />
+        </fieldset>
+        <br><br>
+
+        <!--input type="reset" value="重新填寫"-->
+        <input type="checkbox" id="MustCheck" name="MustCheck"> 同意你隨便用個資...
+        <button type="submit">send</button>
+        <button type="reset">reset</button>
+
+      </form>
     </fieldset>
+  </div>
 </body>
 
 </html>
