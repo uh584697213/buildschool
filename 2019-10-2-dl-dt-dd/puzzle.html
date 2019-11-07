@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $("#startbutton").click(start);
+
+            function start() {
+                var change =
+                    document.getElementById("1").innerHTML;
+                document.getElementById("1").innerHTML = document.getElementById("2").innerHTML;
+                document.getElementById("2").innerHTML = change;
+            }
+
+            function changeid_1() {
+                if(document.getElementById("1").right == document.getElementById("9"))
+            }
+        });
+    </script>
+
+    <style>
+        .div1 {
+            width: 250px;
+            height: 250px;
+            border: black 5px solid;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .div2 {
+            border: red 5px solid;
+            display: table-cell;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        .p1 {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            top: 0px;
+            left: 0px;
+        }
+
+        .p2 {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            top: 0px;
+            left: 80px
+        }
+
+        .p3 {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            top: 0px;
+            left: 160px;
+        }
+
+        .p4 {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            top: 80px;
+            left: 0px;
+        }
+
+        .p5 {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            top: 80px;
+            left: 80px;
+        }
+
+        .p6 {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            top: 80px;
+            left: 160px;
+        }
+
+        .p7 {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            top: 160px;
+            left: 0px
+        }
+
+        .p8 {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            top: 160px;
+            left: 80px
+        }
+
+        .p9 {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            top: 160px;
+            left: 160px
+        }
+    </style>
+</head>
+
+<body>
+    <div style="width: 100%;margin: 0 auto;">
+        <div class="div1">
+            <div class="div2 p1" id="1">1</div>
+            <div class="div2 p2" id="2">2</div>
+            <div class="div2 p3" id="3">3</div>
+            <div class="div2 p4" id="4">4</div>
+            <div class="div2 p5" id="5">5</div>
+            <div class="div2 p6" id="6">6</div>
+            <div class="div2 p7" id="7">7</div>
+            <div class="div2 p8" id="8">8</div>
+            <div class="div2 p9" id="9">9</div><!--當空白用-->>
+        </div>
+        <div style="margin:10px auto; width:250px">
+            <input type="button" class="btn btn-secondary" value="開始" id="startbutton">
+        </div>
+    </div>
+</body>
+
+</html>

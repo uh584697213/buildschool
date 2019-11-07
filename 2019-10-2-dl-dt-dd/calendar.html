@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+
+    <style>
+        /*title的CSS*/
+        .calendar {
+            width: 580px;
+            height: 500px;
+            background: #ffffff;
+            box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.1);
+
+            margin: 20px auto;
+        }
+
+        .body-background {
+            background: #f8f8f8;
+        }
+
+        .body {
+            margin-top: 5px;
+
+        }
+
+        .body-list {
+            width: 100%;
+            font-family: arial;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .body-list ul li {
+            width: 14.28%;
+            height: 36px;
+            line-height: 36px;
+            list-style-type: none;
+            display: block;
+            box-sizing: border-box;
+            float: left;
+            text-align: center;
+        }
+
+        .title {
+            margin: 0 auto;
+            text-align: center;
+            border-bottom: 4px #f8f8f8 solid;
+        }
+
+        /*顏色設定*/
+        .lightgray {
+            color: #a8a8a8;
+        }
+
+        .darkgray {
+            color: #565656;
+        }
+
+        .green {
+            color: #6ac13c;
+        }
+
+        .greenbox {
+            border: 1px solid #6ac13c;
+            background: #e9f8df;
+        }
+    </style>
+
+    <script>
+        window.onload = function(){
+        //生成月曆
+        var month_olympic = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+        var month_normal = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+        var month_name = ["January", "Feburary", "March", "April", "May", "June", "July", "Auguest",
+            "September","October", "November", "December"];
+        //設定變數抓ID
+        
+        var holder = document.getElementById('days');
+        var prev = document.getElementById("prev");
+        var next = document.getElementById("next");
+        var ctitle = document.getElementById("calendar-title");
+        var cyear = document.getElementById("calendar-year");
+
+        //抓到當前時間 月份 年分
+        var my_date = new Date();
+        var my_year = my_date.getFullYear();
+        var my_month = my_date.getMonth();
+        var my_day = my_date.getDate();
+    
+    
+        //抓取哪一年的第一天
+        function daystart(month, year) {
+            var tmpDate = new Date(year, month, 1);
+            return tmpDate.getDay();
+        }
+        //簡單判斷是不是閏年
+        function daysMonth(month, year) {
+            var tmp = year % 4;
+            if (tmp == 0)
+                return month_olympic[month];
+            else
+                return month_normal[month];
+        }
+        //產生出日期
+        function refreshDate() {
+            var str = "";
+            var totalDay = daysMonth(my_month, my_year);
+            var firstDay = daystart(my_month, my_year);
+            var myclass;
+
+            for (var i = 1; i < firstDay; i++) {
+                str += "<li></li>";
+            }
+
+            for (var i = 1; i <= totalDay; i++) {
+                if ((i < my_day && my_year == my_date.getFullYear() && my_month == my_date.getMonth()) ||
+                    my_year < my_date.getFullYear() || (my_year == my_date.getFullYear() && my_month <
+                        my_date.getMonth())) {
+                    myclass = " class='lightgrey'"; //
+                } else if (i == my_day && my_year == my_date.getFullYear() && my_month == my_date
+                    .getMonth()) {
+                    myclass = " class='green greenbox'"; //
+                } else {
+                    myclass = " class='darkgrey'"; //
+                }
+                str += "<li" + myclass + ">" + i + "</li>"; //
+
+            }
+            holder.innerHTML = str;
+            ctitle.innerHTML = month_name[my_month];
+            cyear.innerHTML = my_year;
+
+        }
+        refreshDate();
+
+        prev.onclick = function(e){
+            e.preventDefault();
+            my_month --;
+            if(my_month < 0)
+            {
+                my_month--;
+                my_month=11;
+                my_year--;
+            }
+            refreshDate();
+        }
+
+        next.onclick = function(e){
+            e.preventDefault();
+            my_month ++;
+            if (my_month > 11)
+            {
+                my_month ++;
+                my_month=0;
+                my_year++;
+            }
+            refreshDate();
+        }
+    }
+    </script>
+
+
+
+</head>
+
+<body class="body-background">
+    <div class="calendar">
+        <div class="title">
+            <h1 class="green" id="calendar-title">Month</h1>
+            <h2 class="green " id="calendar-year">year</h2>
+            <a href="" id="prev">Prev Month</a>
+            <a href="" id="next">Next Month</a>
+        </div>
+
+        <div class="body">
+            <div class="lightgray body-list">
+                <ul>
+                    <li>MON</li>
+                    <li>TUE</li>
+                    <li>WED</li>
+                    <li>THU</li>
+                    <li>FRI</li>
+                    <li>SAT</li>
+                    <li>SUN</li>
+                </ul>
+            </div>
+
+            <div class="darkgray body-list">
+                <ul id="days">
+
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</body>
+
+
+
+
+</html>

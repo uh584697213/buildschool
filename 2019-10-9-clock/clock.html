@@ -67,6 +67,7 @@
         function showtime() {
             var date = new Date();
             document.getElementById('clock').innerHTML = date.Format('yyyy-MM-dd HH:mm:ss');
+            
             if (stop == false) {
                 setTimeout(showtime, 1000);
             }

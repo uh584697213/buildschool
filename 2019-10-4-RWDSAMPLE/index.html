@@ -1,13 +1,30 @@
 <!DOCTYPE html>
-<html lang="zh-hant-TW">
+<html lang="zh-Hant-TW">
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <link rel="stylesheet" href="stylesheet/style.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous">
+    </script>
+    <script>
+        $(function () {
+            if ($(".menu-btn").is(":visible")) {
+                $(".header-menu").hide();
+                $(".menu-btn").on("click", function () {
+                    $(".header-menu").toggle();
+                });
+            }
+        });
+    </script>
+    <title>Build School</title>
+
 </head>
 
 <body>
@@ -15,6 +32,9 @@
         <nav class="container">
             <a href="#" class="logo">Build School</a>
             <div class="meun">
+                <button class="menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
                 <ul class="header-menu">
                     <li>
                         <a href="#">Intro</a>
@@ -44,7 +64,7 @@
         </div>
     </section>
 
-    <div class="contant">
+    <div class="content">
         <div class="container">
             <div class="feature-content">
                 <h3>這裡沒有考試，只有滿滿程式碼</h3>
